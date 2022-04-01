@@ -1,17 +1,20 @@
 import React from 'react';
 import Avatar from '../assets/images/avata.jpg';
+import { PlayIcon, BookmarkAltIcon, UserGroupIcon, PuzzleIcon, HomeIcon } from '@heroicons/react/outline';
 
 const Header = () => {
   return (
     <div className="header">
       <ul>
-        <li className="logo">f</li>
-        <li className="input"><input placeholder="Tìm kiếm trên facebook"/></li>
-        <li>Home</li>
-        <li>Watch</li>
-        <li>Marketplace</li>
-        <li>Group</li>
-        <li>Game</li>
+        <li className="not-hover">
+          <div className="logo">f</div>
+          <div className="input"><input placeholder="Tìm kiếm trên facebook"/></div>
+        </li>
+        <li><HomeIcon className="icon-header"/></li>
+        <li><PlayIcon className="icon-header"/></li>
+        <li><BookmarkAltIcon className="icon-header"/></li>
+        <li><UserGroupIcon className="icon-header"/></li>
+        <li><PuzzleIcon className="icon-header"/></li>
         <li className="not-hover">
           <div className="avatar">
             <div>
