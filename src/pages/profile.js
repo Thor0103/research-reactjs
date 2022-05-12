@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../components/Layout';
 import imgAvatar from '../assets/images/profile.jpg';
 import imgPersonal from '../assets/images/avata.jpg';
 import { css } from '@emotion/react';
+import Info from '../components/Info';
+import Post from '../components/Post';
 
 const Profile = () => {
-  const [like, setLike] = React.useState(false);
-  const [disable, setDisable] = React.useState(false);
+  const [like, setLike] = React.useState(0);
+  const [status, setStatus] = React.useState(false);
+  const [scrol, setCrol] = React.useState(false);
+  let date = new Date();
+  let day = date.getFullYear();
+  let content = 'Tương tự, ta sẽ sử dụng những hàm liên quan đến giờ phút giây để lấy trong đối tượng date.';
 
-  const sum = (a, b) => {
-    const s = a + b;
-    console.log('sum: ', s);
-  };
+  React.useEffect(() => {
+    console.log('useEffect 1');
+  }, [like]);
+
+  useEffect(() => {
+    const handleSrol = () => {
+      setCrol(window.innerWidth < 600);
+      console.log ('Scrol: ', scrol);
+    }
+
+    window.addEventListener('resize',handleSrol);
+
+    return () => {
+      window.removeEventListener('resize', handleSrol);
+    }
+  },[]);
 
   return (
     <Layout>
@@ -30,11 +48,7 @@ const Profile = () => {
               </div>
             </div>
             <div className="header-fiend_mid">
-              <h1>Khang Hoàng</h1>
-              <p><span>876</span> Bạn bè</p>
-              <div>
-                Bạn bè
-              </div>
+              <Info name="Thormetal" like={ like }/>
             </div>
             <div className="header-friend_right">
               <div className="header-right_bt-add">
@@ -80,44 +94,28 @@ const Profile = () => {
           </div>
           <div className="content-profile_right">
             <div className="content-right_posts">
-              <div className="content-post_header">
-                <div className="content-post_header-left">
+              <button onClick={ () => setStatus(!status) } type="button">Xem them...</button>
+              <Post name1="Khang" name2="Kha" date={ day } content={ content } show={ status }/>
+              <div className="content-post_comment">
+                <div className="content-comment_left">
                 </div>
-                <div className="content-post_header-mid">
-                  <div>
-                    <p>Khang Hoàng <span>cùng với</span> Kha Lê</p>
-                    <p className="content-post_header-mid-date">13 tháng 3, 2019</p>
-                  </div>
-                  <div>
-                    <span>&#8901;&#8901;&#8901;</span>
-                  </div>
+                <div className="content-comment_right">
+                  <input placeholder="Viết bình luận..." type="text"/>
                 </div>
-
-              </div>
-              <div className="content-post_main">
-                <p>T ước 2 thằng bây đánh đc 1/10 như vậy thôi. T gánh quài cũng mệt lắm chứ</p>
-              </div>
-              <div className="content-post_interaction">
-                <ul>
-                  <li>
-                    <button css={ css`
-                    ${ like ? 'color: blue' : 'color: #7e7a80' }
-                    
-                    ` } onClick={ () => setLike(!like) } type="button">Like
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={ () => setDisable(!disable) } type="button">Disable</button>
-                  </li>
-                  <li>
-                    <button disabled={ disable }>Share</button>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
+      {
+        scrol && (
+          <button css={css`
+            position: fixed;
+            right: 0;
+            bottom: 20px;
+          `}>Xem them</button>
+        )
+      }
     </Layout>
   );
 };

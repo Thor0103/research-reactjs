@@ -9,6 +9,10 @@
   font-family: Segoe-ui-historic, Arial, sans-serif;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .header {
   width: 100%;
   height: 60px;
@@ -24,6 +28,7 @@
 
     li {
       padding: 12px;
+
       .icon-header {
         width: 28px;
         height: 28px;
@@ -35,7 +40,7 @@
         align-items: center;
         padding: 0px;
       }
-      
+
       input {
         width: 250px;
         height: 34px;
@@ -134,28 +139,6 @@
     .header-profile_friend {
       display: flex;
       margin: 0 40px;
-
-      .header-friend_left {
-        width: 20%;
-
-        .header-left_border {
-          overflow: hidden;
-          display: flex;
-          height: 168px;
-          width: 168px;
-          border-radius: 50%;
-          position: absolute;
-          bottom: 35px;
-          padding: 1px;
-          border: 4px solid white;
-
-          img {
-            width: 100%;
-            height: 100%;
-          }
-
-        }
-      }
 
       .header-fiend_mid {
         width: 30%;
@@ -325,6 +308,7 @@
         .content-post_interaction {
           border-top: 1px solid #C3C1C4FF;
           border-bottom: 1px solid #C3C1C4FF;
+          margin-top: 10px;
 
           ul {
             display: flex;
@@ -343,7 +327,7 @@
               font-weight: 600;
               margin-bottom: 5px;
               cursor: pointer;
-              color: #7e7a80;
+
             }
           }
 
@@ -352,12 +336,58 @@
             background-color: #f0f2f5;
             border-radius: 104px;
           }
+        }
 
+        .content-post_comment {
+          display: flex;
+          margin-top: 10px;
+          align-items: center;
 
+          .content-comment_left {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #2b82f3;
+          }
+
+          .content-comment_right {
+            margin-left: 10px;
+
+            input {
+              width: 100%;
+              height: 30px;
+              padding: 0 20px;
+              border-radius: 20px;
+              border: none;
+              background-color: #f0f2f5;
+              outline: none;
+            }
+          }
         }
       }
-
     }
+  }
+}
+
+.header-friend_left {
+  width: 20%;
+
+  .header-left_border {
+    overflow: hidden;
+    display: flex;
+    height: 168px;
+    width: 168px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 35px;
+    padding: 1px;
+    border: 4px solid white;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
   }
 }
 

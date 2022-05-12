@@ -16,9 +16,8 @@ const HelloWord = (props) => {
       <div>
         User name: { userName }
       </div>
-      <button onClick={updatetUserName} type="button">Set user name</button>
+      <button className="" onClick={updatetUserName} type="button">Set user name</button>
       <button onClick={deletetUserName} type="button">Delete user name</button>
-
     </>
   );
 };
